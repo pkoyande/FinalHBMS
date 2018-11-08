@@ -1,0 +1,36 @@
+create table Hotel(hotel_id number(6) primary key, city varchar(20), hotel_name varchar (40), address varchar(25), description varchar(50), avg_rate_per_night NUMBER(6,2), phone_no1 varchar(10), phone_no2 varchar(10), rating varchar(4), email varchar(25), fax varchar(15));
+create table Users(user_id number(6) primary key, password varchar(10), role varchar(10),  user_name varchar (20), mobile_no varchar(10), phone varchar(10), address varchar(25), email varchar(15));
+create table RoomDetails(hotel_id number(6) REFERENCES Hotel(hotel_id),  room_id number(4) primary key,  room_no varchar(3), room_type varchar(20), per_night_rate number(6,2), availability varchar(10));
+create table BookingDetails(booking_id number(6) primary key, room_id number(4) REFERENCES RoomDetails(room_id),  user_id number(6) REFERENCES Users(user_id), booked_from date, booked_to date, no_of_adults number(2), no_of_children number(2), amount number(6,2));
+
+insert into Users values(1,admin,admin,admin,12345,13254,Pune,Abc@mail);
+
+CREATE SEQUENCE User_Id_Seq
+MINVALUE 101
+START WITH 101
+INCREMENT BY 1
+NOCACHE;
+
+Drop Table Hotel;
+
+
+CREATE SEQUENCE Hotel_Id_Seq
+MINVALUE 201
+START WITH 201
+INCREMENT BY 1
+NOCACHE;
+
+CREATE SEQUENCE Book_Id_Seq
+MINVALUE 301
+START WITH 301
+INCREMENT BY 1
+NOCACHE;
+
+
+CREATE SEQUENCE Room_Id_Seq
+MINVALUE 401
+START WITH 401
+INCREMENT BY 1
+NOCACHE;
+
+
